@@ -13,6 +13,7 @@ export class OpenAI {
     topP = 1,
     frequencyPenalty = 0.5,
     presencePenalty = 0,
+    stop = null
   ): Promise<Response> {
     const response = await fetch(
       `https://api.openai.com/v1/engines/${engine}/completions`,
@@ -24,6 +25,7 @@ export class OpenAI {
           top_p: topP,
           frequency_penalty: frequencyPenalty,
           presence_penalty: presencePenalty,
+          stop: stop,
         }),
         headers: {
           Authorization: `Bearer ${this.privKey}`,
